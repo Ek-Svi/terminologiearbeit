@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Terminologie-Arbeit</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network@9.1.2/dist/vis-network.min.js"></script>
+  <style>
+    #mynetwork {
+      width: 75vw; /* Statt 50% */
+      height: 90vh; /* Statt 600px */
+      float: left;
+      border: 1px solid lightgray;
+      margin-right: 1vw;
+      position: relative;
+    }
+
+    #info {
+      width: 20vw; /* Statt 40% */
+      float: right;
+      padding: 10px;
+      border-left: 1px solid lightgray;
+      height: 90vh;
+      overflow-y: auto;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="mynetwork"></div>
+  <div id="info"><strong>Info:</strong></div>
+
+  <script>
+
+    /**
+    TERMINOLOGIE DATEN
+    */
+
+    const HIERARCHIE = [
+      { name: "Asyl-, Flüchtlingsschutz und Migration", id: "0" },
+      
+      { name: "Schutzform", id: "0.1", domain: "<main_domain: form>" },
+      { name: "Flüchtlingsschutz", id: "0.1.1", domain: "<sub_domain 1.1>" },
+      { name: "Asylberechtigung", id: "0.1.2", domain: "<sub_domain 1.2>" },
+      { name: "subsidiärer Schutz", id: "0.1.3", domain: "<sub_domain 1.3>" },
+      { name: "Nationales Abschiebungsverbot", id: "0.1.4", domain: "<sub_domain 1.4>" },
+
+      { name: "Betroffene", id: "0.2", domain: "<main_domain: recipient>" },
+      { name: "Asylsuchende", id: "0.2.1" },
+      { name: "Anerkannte Flüchtlinge", id: "0.2.2" },
+      { name: "Antragsteller auf internationalen Schutz", id: "0.2.3" },
+      { name: "Asylantragsteller", id: "0.2.4" },
+      { name: "Asylberechtigte", id: "0.2.5" },
+      { name: "Asylbewerber", id: "0.2.6" },
+      { name: "Aufenthalt vollziehbar ausreise pflichtiger Personen", id: "0.2.7" },
+      { name: "Ausländer", id: "0.2.8" },
+      { name: "Binnenflüchtling", id: "0.2.9" },
+      { name: "Binnenvertriebener", id: "0.2.10" },
+      { name: "De-facto-Flüchtling", id: "0.2.11" },
+      { name: "Drittstaatsangehöriger", id: "0.2.12" },
+      { name: "Flüchtling", id: "0.2.13" },
+      { name: "Geflüchteter", id: "0.2.14" },
+      { name: "Person mit Anspruch auf subsidiären Schutz", id: "0.2.15" },
+      { name: "Personen mit Duldung", id: "0.2.16" },
+      { name: "Personen mit nationalem Abschiebeschutz", id: "0.2.17" },
+      { name: "Resettlement-Flüchtling", id: "0.2.18" },
+      { name: "Staatenloser", id: "0.2.19" },
+      { name: "statutärer Flüchtling", id: "0.2.20" },
+      { name: "Subsidiär Schutz Berechtigte", id: "0.2.21" },
+      { name: "Umweltflüchtling", id: "0.2.22" },
+      { name: "Umweltvertriebener", id: "0.2.23" },
+      { name: "Vertriebener", id: "0.2.24" },
+      { name: "Emigrant", id: "0.2.25" },
+      { name: "Migranten", id: "0.2.26" },
+      { name: "<...>", id: "0.2.26.1" },
+
+      { name: "Rechtsquellen", id: "0.3", domain: "<main_domain legal_text>" },
+      { name: "internationale Ebene", id: "0.3.1", domain: "<sub_domain 3.1 international_lt>" },
+      { name: "EU Ebene", id: "0.3.2", domain: "<sub_domain 3.2 supranational_lt>" },
+      { name: "EU-Verordnungen", id: "0.3.2.1", domain: "<sub_domain 3.2.1 legislation_regulation>" },
+      { name: "Dublin III-Verordnung: VO (EU) Nr. 604/2013", id: "0.3.2.1.1" },
+      { name: "Eurodac-Verordnung: VO (EU) Nr. 603/2013", id: "0.3.2.1.2" },
+      { name: "EU-Richtlinien", id: "0.3.2.2", domain: "<sub_domain 3.2.2 legislation_derictives>" },
+      { name: "Qualifikationsrichtlinie: RL 2011/95/EU", id: "0.3.2.2.1" },
+      { name: "Aufnahmerichtlinie: RL 2013/33/EU", id: "0.3.2.2.2" },
+      { name: "Asylverfahrensrichtlinie: RL 2013/32/EU", id: "0.3.2.2.3" },
+      { name: "nationale Ebene", id: "0.3.3", domain: "<sub_domain 3.3 national_lt>" },
+      { name: "Gesetz", id: "0.3.3.1", domain: "<sub_domain 3.1.1 legislation_law>" },
+      { name: "GG", id: "0.3.3.1.1" },
+      { name: "AsylG", id: "0.3.3.1.2" },
+      { name: "AufenthG", id: "0.3.3.1.3" },
+      { name: "AsylbLG", id: "0.3.3.1.4" },
+      { name: "FlüAG", id: "0.3.3.1.5" },
+      { name: "DE-Verordnungen", id: "0.3.3.2", domain: "<sub_domain 3.1.2 legislation_regulation>" },
+      { name: "UkraineAufenthÜV", id: "0.3.3.2.1" },
+      { name: "IsraelAufenthÜV", id: "0.3.3.2.2" },
+
+      { name: "Körperschaften", id: "0.4", domain: "<main_domain authorities>" },
+      { name: "internationale Ebene", id: "0.4.1", domain: "<sub_domain 4.1 international_aut>" },
+      { name: "Internationale Organisation für Migration", id: "0.4.1.1" },
+      { name: "Amt des Hohen Flüchtlingskommissars der Vereinten Nationen", id: "0.4.1.2" },
+      { name: "EU Ebene", id: "0.4.2", domain: "<sub_domain 4.2 supranational_aut>" },
+      { name: "Europäische Agentur für die Grenz- und Küstenwache", id: "0.4.2.1" },
+      { name: "Asylagentur der Europäischen Union", id: "0.4.2.2" },
+      { name: "Europäisches Migrationsnetzwerk", id: "0.4.2.3" },
+      { name: "Agentur der Europäischen Union für Grundrechte", id: "0.4.2.4" },
+      { name: "Strategisches Komitee für Einwanderungs-, Grenz- und Asylfragen", id: "0.4.2.5" },
+      { name: "Migration, Asylum, Refugees Regional Initiative", id: "0.4.2.6" },
+      { name: "nationale Ebene", id: "0.4.3", domain: "<sub_domain 4.3 national_aut>" },
+      { name: "Bundesamt für Migration und Flüchtlinge", id: "0.4.3.1" },
+      { name: "Die Beauftragte der Bundesregierung für Migration, Flüchtlinge und Integration", id: "0.4.3.2" },
+      { name: "Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung", id: "0.4.3.3" },
+      { name: "Informationszentrum Asyl und Migration", id: "0.4.3.4" },
+      { name: "Ausländerbehörde", id: "0.4.3.5" },
+    ]
+
+    const CONNECTIONS = [
+      ["Asylberechtigung", "AsylG", 4],
+      ["Flüchtlingsschutz", "AsylG", 3]
+    ]
+    
+    const COLORS = [
+      "red", "orange", "yellow", "green", "lightblue"
+    ]
+
+    /**
+    TERMINOLOGIE DATEN ENDE
+    */
+
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function (match) {
+        const escapeMap = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        };
+        return escapeMap[match];
+      });
+    }
+
+
+    const textByNodeID = {}
+    const idByName = {}
+
+    const nodesData = []
+    const edgesData = []
+    HIERARCHIE.forEach((node) => {
+      idLabel = `ID${node.id}`
+      nodeData = { id: node.id, label: `${idLabel} ${node.name}` }
+
+      if (typeof node.domain !== "undefined") {
+        textByNodeID[node.id] = `${escapeHtml(node.domain)} <b>${node.name}</b> `;
+      } else {
+        textByNodeID[node.id] = node.name;
+      }
+
+      idByName[node.name] = node.id
+
+      level = node.id.split(".").length
+      if (level > 1) {
+        const parentId = node.id.substring(0, node.id.lastIndexOf("."));
+        edgesData.push({ from: parentId, to: node.id, arrows: "to", color: "gray" })
+      }
+      nodeData.size = Math.max(10, 60 - 10 * level)
+      nodeData.color =  COLORS[level-1]
+      nodesData.push(nodeData)
+    });
+
+    CONNECTIONS.forEach((connection) => {
+      console.log(connection);
+      edgesData.push({ from: idByName[connection[0]], to: idByName[connection[1]], width: connection[2], color: "lightblue" });
+    });
+
+
+
+    const nodes = new vis.DataSet(nodesData);
+
+    const edges = new vis.DataSet(edgesData);
+
+    const container = document.getElementById("mynetwork");
+    const data = {
+      nodes:
+        nodes, edges: edges
+    };
+
+    const options = {
+      physics: {
+        enabled: true,
+      },
+  layout: {
+    improvedLayout: true // Enable improved layout but not hierarchical
+  },
+  interaction: {
+    navigationButtons: true,
+    keyboard: true,
+    dragView: true,
+    zoomView: true,
+    dragNodes: true
+  },
+  nodes: {
+    size: 20,
+    shape: 'box',
+    mass: 2,
+    font: {
+      align: 'center',
+      size: 16
+    },
+    fixed: false // Ensure nodes are not fixed unless set manually
+  },
+  edges: {
+    smooth: {
+      type: 'dynamic'
+    },
+    arrows: {
+      to: { enabled: true, scaleFactor: 1 }
+    }
+  }
+};
+
+// Ensure nodes stay where dropped by disabling physics and fixing their position
+function setupNodeDraggingBehavior(network) {
+  network.on("dragEnd", function (params) {
+    if (params.nodes.length > 0) {
+      params.nodes.forEach(nodeId => {
+        network.body.nodes[nodeId].options.fixed = { x: true, y: true }; // Lock position
+      });
+    }
+  });
+} 
+
+// Example usage after initializing the network
+// const network = new vis.Network(container, data, options);
+// setupNodeDraggingBehavior(network);
+
+
+    const network = new vis.Network(container, data, options);
+
+    function resetNodes() {
+      nodes.get().forEach((node) => {
+        nodes.update({ id: node.id, color: { background: 'lightgray' } }); // Standardfarbe von Vis.js
+      });
+    }
+
+    resetNodes();
+    network.on("click", function (params) {
+      if (params.nodes.length === 1) {
+        const nodeId = params.nodes[0];
+        const connectedNodes = network.getConnectedNodes(nodeId);
+
+        // Alle Nodes zurücksetzen
+        resetNodes();
+
+        connectedNodes.forEach(id => {
+          nodes.update({ id: id, color: { background: 'lightblue' } });
+        });
+
+        document.getElementById("info").innerHTML = (textByNodeID[nodeId] || "");
+      }
+    });
+   network.once('stabilizationIterationsDone', function () {
+  network.moveTo({ scale: 0.7 });
+  network.setOptions({
+  physics: { enabled: false }
+});
+});
+
+
+
+  </script>
+
+</body>
+
+</html>

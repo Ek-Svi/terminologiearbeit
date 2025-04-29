@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Terminologische Einträge - Schutzformen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .entry {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+      position: relative;
+    }
+
+    .entry h2 {
+      margin-top: 0;
+    }
+
+    details {
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    summary:hover {
+      color: #007BFF;
+    }
+
+    details[open] {
+      background-color: #eef;
+    }
+
+    .alphabet {
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+
+    .alphabet a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    .alphabet a:hover {
+      text-decoration: underline;
+    }
+
+    .alphabet span {
+      margin-right: 10px;
+      color: grey;
+      font-weight: bold;
+    }
+
+    .anchor {
+      padding-top: 60px;
+      margin-top: -60px;
+      display: block;
+    }
+
+    .internal-info {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-top: 1px dashed #aaa;
+      display: none;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .internal-toggle {
+      margin-bottom: 20px;
+      padding: 8px 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .internal-toggle:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Terminologische Einträge – Schutzformen</h1>
+
+  <button class="internal-toggle" onclick="toggleInternal()">Interne Daten anzeigen</button>
+
+  <!-- Alphabetisches Register -->
+  <div class="alphabet">
+    <a href="#A">A</a>
+    <span>B</span>
+    <span>C</span>
+    <span>D</span>
+    <span>E</span>
+    <a href="#F">F</a>
+    <span>G</span>
+    <span>H</span>
+    <span>I</span>
+    <span>J</span>
+    <span>K</span>
+    <span>L</span>
+    <span>M</span>
+    <a href="#N">N</a>
+    <span>O</span>
+    <span>P</span>
+    <span>Q</span>
+    <span>R</span>
+    <a href="#S">S</a>
+    <span>T</span>
+    <span>U</span>
+    <span>V</span>
+    <span>W</span>
+    <span>X</span>
+    <span>Y</span>
+    <span>Z</span>
+  </div>
+
+  <!-- Einträge -->
+
+  <!-- Anker A -->
+  <span id="A" class="anchor"></span>
+
+  <div class="entry" 
+       data-id="0.1.2" 
+       data-domain="sub_domain 1.2" 
+       data-author="EkSvi" 
+       data-created="28.04.2025"
+       data-editor="EkSvi"
+       data-edited="28.04.2025">
+    <h2>Begriff: "Asylberechtigung"</h2>
+
+    <details>
+      <summary>Rechtsordnung</summary>
+      <p>de-DE</p>
+    </details>
+
+    <details>
+      <summary>Gesetzquelle</summary>
+      <p>Art. 16a GG, § 2 AsylG, §§ 25-26 AufenthG</p>
+    </details>
+
+    <details>
+      <summary>Definition</summary>
+      <p>Die Asylberechtigung ist ein im Grundgesetz verankerter Schutzstatus, der Personen gewährt wird, die in ihrem Herkunftsland wegen politischer Verfolgung individuell bedroht sind und deshalb Schutz in Deutschland suchen. (Quelle: BAMF)</p>
+    </details>
+
+    <details>
+      <summary>Benennung (Sprache-Land)</summary>
+      <p>Asylberechtigung (de-DE)</p>
+    </details>
+
+    <details>
+      <summary>Grammatische Angaben</summary>
+      <p>Nomen, f, Singular</p>
+    </details>
+
+    <details>
+      <summary>Übersetzungsvorschlag</summary>
+      <p>признанное право на получение убежища (ru-RU)</p>
+    </details>
+
+    <details>
+      <summary>Kommentar zur Übersetzung</summary>
+      <p>Art. 12 des Föderalen Gesetzes der Russischen Föderation „Über Flüchtlinge“ (Nr. 4528-I vom 19. Februar 1993)</p>
+    </details>
+
+    <div class="internal-info"></div>
+  </div>
+
+  <!-- Anker F -->
+  <span id="F" class="anchor"></span>
+
+  <div class="entry" 
+       data-id="0.1.1" 
+       data-domain="sub_domain 1.1" 
+       data-author="EkSvi" 
+       data-created="28.04.2025"
+       data-editor="EkSvi"
+       data-edited="28.04.2025">
+    <h2>Begriff: "Flüchtlingsschutz"</h2>
+
+    <details>
+      <summary>Rechtsordnung</summary>
+      <p>de-DE</p>
+    </details>
+
+    <details>
+      <summary>Gesetzquelle</summary>
+      <p>§ 3 AsylG, §§ 25-26 AufenthG</p>
+    </details>
+
+    <details>
+      <summary>Definition</summary>
+      <p>Der Flüchtlingsschutz ist ein rechtlicher Status, der Personen gewährt wird, die aus begründeter Furcht vor Verfolgung wegen ihrer Rasse, Religion, Nationalität, politischen Überzeugung oder Zugehörigkeit zu einer bestimmten sozialen Gruppe ihr Herkunftsland nicht zurückkehren können. (Quelle: BAMF)</p>
+    </details>
+
+    <details>
+      <summary>Benennung (Sprache-Land)</summary>
+      <p>Flüchtlingsschutz (de-DE)</p>
+    </details>
+
+    <details>
+      <summary>Grammatische Angaben</summary>
+      <p>Nomen, m, Singular</p>
+    </details>
+
+    <details>
+      <summary>Übersetzungsvorschlag</summary>
+      <p>статус беженца (ru-RU)</p>
+    </details>
+
+    <details>
+      <summary>Kommentar zur Übersetzung</summary>
+      <p>Föderales Gesetz der Russischen Föderation „Über Flüchtlinge“ (Nr. 4528-I vom 19. Februar 1993)</p>
+    </details>
+
+    <div class="internal-info"></div>
+  </div>
+
+  <!-- Anker N -->
+  <span id="N" class="anchor"></span>
+
+  <div class="entry" 
+       data-id="0.1.4" 
+       data-domain="sub_domain 1.4" 
+       data-author="EkSvi" 
+       data-created="28.04.2025"
+       data-editor="EkSvi"
+       data-edited="28.04.2025">
+    <h2>Begriff: "Nationales Abschiebungsverbot"</h2>
+
+    <details>
+      <summary>Rechtsordnung</summary>
+      <p>de-DE</p>
+    </details>
+
+    <details>
+      <summary>Gesetzquelle</summary>
+      <p>§ 60 AufenthG</p>
+    </details>
+
+    <details>
+      <summary>Definition</summary>
+      <p>Ein nationales Abschiebungsverbot liegt vor, wenn die Abschiebung einer Person in ihr Herkunftsland eine erhebliche konkrete Gefahr für Leib, Leben oder Freiheit darstellen oder gegen die Europäische Menschenrechtskonvention verstoßen würde. (Quelle: BAMF)</p>
+    </details>
+
+    <details>
+      <summary>Benennung (Sprache-Land)</summary>
+      <p>Nationales Abschiebungsverbot (de-DE)</p>
+    </details>
+
+    <details>
+      <summary>Grammatische Angaben</summary>
+      <p>Nominalphrase, n, Singular</p>
+    </details>
+
+    <details>
+      <summary>Übersetzungsvorschlag</summary>
+      <p>внутренний запрет на депортацию (ru-RU)</p>
+    </details>
+
+    <details>
+      <summary>Kommentar zur Übersetzung</summary>
+      <p>Wortwörtliche Übersetzung; In der Russischen Föderation existiert kein ausdrückliches gesetzliches Verbot der Abschiebung. Die Möglichkeit des temporären Asyls (временное убежище) kann als Schutzmechanismus gelten.</p>
+    </details>
+
+    <div class="internal-info"></div>
+  </div>
+
+  <!-- Anker S -->
+  <span id="S" class="anchor"></span>
+
+  <div class="entry" 
+       data-id="0.1.3" 
+       data-domain="sub_domain 1.3" 
+       data-author="EkSvi" 
+       data-created="28.04.2025"
+       data-editor="EkSvi"
+       data-edited="28.04.2025">
+    <h2>Begriff: "subsidiärer Schutz"</h2>
+
+    <details>
+      <summary>Rechtsordnung</summary>
+      <p>de-DE</p>
+    </details>
+
+    <details>
+      <summary>Gesetzquelle</summary>
+      <p>§ 4 AsylG</p>
+    </details>
+
+    <details>
+      <summary>Definition</summary>
+      <p>Der subsidiäre Schutz ist ein Schutzstatus für Personen, denen im Herkunftsland ernsthafter Schaden wie Todesstrafe, Folter oder bewaffnete Konflikte droht, ohne dass sie als Flüchtlinge im Sinne der Genfer Konvention anerkannt werden. (Quelle: BAMF)</p>
+    </details>
+
+    <details>
+      <summary>Benennung (Sprache-Land)</summary>
+      <p>subsidiärer Schutz</p>
+    </details>
+
+    <details>
+      <summary>Grammatische Angaben</summary>
+      <p>Nominalphrase, m, Singular</p>
+    </details>
+
+    <details>
+      <summary>Übersetzungsvorschlag</summary>
+      <p>дополнительная (субсидиарная) защита (ru-RU)</p>
+    </details>
+
+    <details>
+      <summary>Kommentar zur Übersetzung</summary>
+      <p>keine direkte Entsprechung nach russischem Recht (Föderales Gesetz der Russischen Föderation „Über Flüchtlinge“ Nr. 4528-I vom 19. Februar 1993), siehe die Qualifikationsrichtlinie: RL 2011/95/EU</p>
+    </details>
+
+    <div class="internal-info"></div>
+  </div>
+
+  <script>
+    let internalVisible = false;
+
+    function toggleInternal() {
+      internalVisible = !internalVisible;
+      const entries = document.querySelectorAll('.entry');
+      const button = document.querySelector('.internal-toggle');
+
+      entries.forEach(entry => {
+        const infoBox = entry.querySelector('.internal-info');
+        if (internalVisible) {
+          const id = entry.getAttribute('data-id');
+          const domain = entry.getAttribute('data-domain');
+          const author = entry.getAttribute('data-author');
+          const created = entry.getAttribute('data-created');
+          const edited = entry.getAttribute('data-edited');
+          const editor = entry.getAttribute('data-editor');
+          infoBox.innerHTML = `
+            <strong>Interne Informationen:</strong><br>
+            ID: ${id}<br>
+            Domäne: ${domain}<br>
+            Autor: ${author}<br>
+            Eintragsdatum: ${created}<br>
+            Editor: ${editor}<br>
+            Änderungsdatum: ${edited}
+          `;
+          infoBox.style.display = 'block';
+          button.textContent = "Interne Daten ausblenden";
+        } else {
+          infoBox.style.display = 'none';
+          button.textContent = "Interne Daten anzeigen";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
